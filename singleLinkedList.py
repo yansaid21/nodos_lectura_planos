@@ -186,8 +186,9 @@ class SingleLinkedList:
     
     def prepend_data_lines (self):
         the_file= ReadData
-        self.prepend_node(the_file.show_file_content)
-        print("lo leyo")
+        for i in range(the_file.count_Lines()):
+            self.prepend_node(the_file.show_file_content())
+            print("lo leyo")
 
     '''  def menu_options(self):
         print('*********SELECCIONA UNA OPCIÓN*********\n            1. Insertar nodo al final\n            2. Insertar nodo al inicio')
