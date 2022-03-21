@@ -186,9 +186,12 @@ class SingleLinkedList:
     
     def prepend_data_lines (self):
         the_file= ReadData
-        for i in range(the_file.count_Lines()):
-            self.append_node(the_file.show_file_content_v3())
-            print("lo leyo")
+        lines= []
+        lines=the_file.show_file_content_v3()
+        for i in lines :
+            self.append_node(i)
+            #print("lo leyo")
+        self.show_nodes_list()
 
     '''  def menu_options(self):
         print('*********SELECCIONA UNA OPCIÓN*********\n            1. Insertar nodo al final\n            2. Insertar nodo al inicio')
@@ -218,7 +221,8 @@ class SingleLinkedList:
             the_file.show_file_content()
         if optionA =="c" :
             the_file.replace_file()
-            the_file.show_file_content()       
+            the_file.show_file_content() 
+        self.prepend_data_lines()      
             
         optionB=input("\n que desea continuar haciendo: \n a: insertar un nuevo nodo \n b: eliminar un nodo \n c: consultar por el valor de un nodo especificado\n d: Editar el valor de un nodo existente en la lista \n e: Invertir el contenido de la lista \n f: Vaciar la lista \n g: Salir del sistema\n >>>> ")
         try:
