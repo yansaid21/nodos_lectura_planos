@@ -208,17 +208,38 @@ class SingleLinkedList:
     def menu_options(self):
         the_file= ReadData
         optionA=input(" <<<<desesa: \n a: leer el archivo existente \n b: editar el archivo \n c: sobreescribir el archivo\n >>>> ")
+        while optionA != "a" and optionA !="b" and optionA != "c":
+            optionA=input("ingrese uno de las letras esperadas\n >>> ")
+            
+        if optionA  == "a":
+            the_file.show_file_content()
+        if optionA == "b":
+            the_file.write_in_file()
+            the_file.show_file_content()
+        if optionA =="c" :
+            the_file.replace_file()
+            the_file.show_file_content()       
+            
+        optionB=input("\n que desea continuar haciendo: \n a: insertar un nuevo nodo \n b: eliminar un nodo \n c: consultar por el valor de un nodo especificado\n d: Editar el valor de un nodo existente en la lista \n e: Invertir el contenido de la lista \n f: Vaciar la lista \n g: Salir del sistema\n >>>> ")
         try:
-            if optionA  == "a":
-                the_file.show_file_content()
-            if optionA == "b":
-                the_file.write_in_file()
-                the_file.show_file_content()
-            if optionA =="c" :
-                the_file.replace_file()
-                the_file.show_file_content()       
+            if optionB == "a":
+                while True:
+                    try:
+                        optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
+                        break
+                    except ValueError:
+                        print("se esperaba un valor numérico ")
+                    
+            ''' elif optionB == "b":
+            
+            elif optionB == "c":
+            
+            elif optionB == "d":
+            
+            elif optionB == "e":
+            
+            elif optionB == "f":
+            
+            elif optionB == "g": '''
         except ValueError:
-            
-            optionA=input("ingrese uno de las letras esperadas")
-            
-        
+            print("se esperaba un valor dentro de los propuestos")
