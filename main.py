@@ -5,6 +5,7 @@ inst_sll = SingleLinkedList()
 inst_read_data = ReadData()
 inst_sll.prepend_data_lines()
 inst_sll.show_nodes_list()
+inst_sll.menu_options()
 
 ''' A, B, C, D'''
 ''' inst_sll.prepend_node('B')

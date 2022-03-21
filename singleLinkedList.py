@@ -187,7 +187,7 @@ class SingleLinkedList:
     def prepend_data_lines (self):
         the_file= ReadData
         for i in range(the_file.count_Lines()):
-            self.prepend_node(the_file.show_file_content())
+            self.append_node(the_file.show_file_content_v3())
             print("lo leyo")
 
     '''  def menu_options(self):
@@ -205,3 +205,20 @@ class SingleLinkedList:
                 #insertar el nodo
             except ValueError:
                 print('*********Opción inválida*********') ''' 
+    def menu_options(self):
+        the_file= ReadData
+        optionA=input(" <<<<desesa: \n a: leer el archivo existente \n b: editar el archivo \n c: sobreescribir el archivo\n >>>> ")
+        try:
+            if optionA  == "a":
+                the_file.show_file_content()
+            if optionA == "b":
+                the_file.write_in_file()
+                the_file.show_file_content()
+            if optionA =="c" :
+                the_file.replace_file()
+                the_file.show_file_content()       
+        except ValueError:
+            
+            optionA=input("ingrese uno de las letras esperadas")
+            
+        
