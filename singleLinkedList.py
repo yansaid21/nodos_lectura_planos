@@ -179,7 +179,9 @@ class SingleLinkedList:
         else:
             return None
 
-
+    def remove_all_nodes(self):
+        self.head=None
+        self.tail=None
 
     def reverse(self):
         # Revierte la linkedlist
@@ -301,9 +303,12 @@ class SingleLinkedList:
             
                 
         elif optionB == "e":
-            self.reverse()
-               ''' 
-                elif optionB == "f":
-                
-                elif optionB == "g": '''
-    
+            the_file.reverse_file(the_file())
+            self.prepend_data_lines()
+            
+        elif optionB == "f":
+            the_file.delete_all(the_file())
+            self.prepend_data_lines() 
+        elif optionB == "g": 
+            print("hasta luego")
+            

@@ -80,4 +80,13 @@ class ReadData:
         datos.pop(index)
         self.update_file_list(datos)
         
+    def reverse_file(self):
+        datos=self.show_file_content_v3()
+        datos.reverse()
+        self.update_file_list(datos)
+    
+    def delete_all(self):
+        with io.open(self.archivo,'w', encoding='utf-8') as data_file:
+            data_file.write("")
+        
         
