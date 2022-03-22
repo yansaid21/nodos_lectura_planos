@@ -7,7 +7,7 @@ inst_read_data = ReadData()
 #inst_sll.prepend_data_lines()
 #inst_sll.show_nodes_list()
 inst_sll.menu_options()
-print(inst_read_data.count_Lines())
+#print(inst_read_data.count_Lines())
 
 ''' A, B, C, D'''
 ''' inst_sll.prepend_node('B')

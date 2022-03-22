@@ -261,15 +261,37 @@ class SingleLinkedList:
     
                     
                 
-        ''' elif optionB == "b":
+        elif optionB == "b":
+            while True:
+                try:
+                    optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
+                    break
+                except ValueError:
+                    print("se esperaba un valor numérico ")
+            if optionC == 1:
+                the_file.delete_someOne(the_file(),0)
+                self.prepend_data_lines()
+                self.show_nodes_list()
+            if optionC == 2 :
+                print(len(self.ret_node_list()))
+                the_file.delete_someOne(the_file(),len(self.ret_node_list())-1)
+                self.prepend_data_lines()
+                self.show_nodes_list()
+            if optionC == 3:
+                print (len(self.ret_node_list()))
+                print(f"ingrese in numero entre 1 y {the_file.count_Lines(the_file())}")
+                index= int(input("ingrese el indice\n >>> "))
+                the_file.delete_someOne(the_file(),index-1)
+                self.prepend_data_lines()
+                self.show_nodes_list()
         
-        elif optionB == "c":
-        
-        elif optionB == "d":
-        
-        elif optionB == "e":
-        
-        elif optionB == "f":
-        
-        elif optionB == "g": '''
+            ''' elif optionB == "c":
+            
+            elif optionB == "d":
+            
+            elif optionB == "e":
+            
+            elif optionB == "f":
+            
+            elif optionB == "g": '''
     
