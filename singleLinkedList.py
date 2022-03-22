@@ -1,4 +1,5 @@
-from read_data import ReadData
+
+from read_data2 import ReadData
 class SingleLinkedList:
     ''' Creamos una clase anidada en SingleLinkedList '''
     class Node:
@@ -198,27 +199,12 @@ class SingleLinkedList:
     def prepend_data_lines (self):
         the_file= ReadData
         lines= []
-        lines=the_file.show_file_content_v3()
+        lines=the_file.show_file_content_v3(the_file())
         for i in lines :
             self.append_node(i)
             #print("lo leyo")
         self.show_nodes_list()
 
-    '''  def menu_options(self):
-        print('*********SELECCIONA UNA OPCIÓN*********\n            1. Insertar nodo al final\n            2. Insertar nodo al inicio')
-        while True:
-            try:
-                option_user = int(input('           >>>'))
-                if(option_user != 1 and option_user != 2):
-                    option_user = int(input('           >>>'))
-                elif option_user == 1:
-                    self.prepend_node()
-                else:
-                    self.append_node()
-                #Validar si la lista tiene más de dos nodos para activar en el menu la opción de 
-                #insertar el nodo
-            except ValueError:
-                print('*********Opción inválida*********') ''' 
     def menu_options(self):
         the_file= ReadData
         optionA=input(" <<<<desesa: \n a: leer el archivo existente \n b: editar el archivo \n c: sobreescribir el archivo\n >>>> ")
@@ -226,58 +212,64 @@ class SingleLinkedList:
             optionA=input("ingrese uno de las letras esperadas\n >>> ")
             
         if optionA  == "a":
-            the_file.show_file_content()
+            the_file.show_file_content(the_file())
         if optionA == "b":
             valor=input("ingrese el valor\n >>>> ")
-            the_file.write_in_file(valor)
-            the_file.show_file_content()
+            the_file.write_in_file(the_file(),valor)
+            the_file.show_file_content(the_file())
         if optionA =="c" :
-            the_file.replace_file()
-            the_file.show_file_content() 
+            the_file.replace_file(the_file())
+            the_file.show_file_content(the_file()) 
             
-        self.prepend_data_lines()      
-            
-        optionB=input("\n que desea continuar haciendo: \n a: insertar un nuevo nodo \n b: eliminar un nodo \n c: consultar por el valor de un nodo especificado\n d: Editar el valor de un nodo existente en la lista \n e: Invertir el contenido de la lista \n f: Vaciar la lista \n g: Salir del sistema\n >>>> ")
-        try:
-            if optionB == "a":
-                while True:
-                    try:
-                        optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
-                        if optionC == 1:
-                            valor=input(" ingrese el valor \n >>> ")
-                            self.prepend_node(valor)
-   #                         the_file.delete_file()
-                            the_file.update_file_list(self.ret_node_list())
-                            self.show_nodes_list()
-                        if optionC == 2 :
-                            valor=input(" ingrese el valor \n >>> ")
-                            self.append_node(valor)
-                            the_file.write_in_file(valor)
-                            self.show_nodes_list()
-                            the_file.show_file_content()
-                        if optionC == 3:
-                            index= int(input("ingrese el indice\n >>> "))
-                            valor=input(" ingrese el valor \n >>> ")
-                            self.insert(index,valor)
-                            the_file.update_file(self.ret_node_list)
-                            self.show_nodes_list()
-                            
-                        break
-                    except ValueError:
-                        print("se esperaba un valor numérico ")
-        
+            self.prepend_data_lines()      
+        while True:
+            try:    
+                optionB=input("\n que desea continuar haciendo: \n a: insertar un nuevo nodo \n b: eliminar un nodo \n c: consultar por el valor de un nodo especificado\n d: Editar el valor de un nodo existente en la lista \n e: Invertir el contenido de la lista \n f: Vaciar la lista \n g: Salir del sistema\n >>>> ")
+                break
+            except ValueError:
+                print("se esperaba un valor dentro de los propuestos")
+        if optionB == "a":
+            while True:
+                try:
+                    optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
+                    break
+                except ValueError:
+                    print("se esperaba un valor numérico ")
+            if optionC == 1:
+                valor=input(" ingrese el valor \n >>> ")
+                self.prepend_node(valor)
+#                         the_file.delete_file()
+                the_file.update_file_list(the_file(),self.ret_node_list())
+                self.show_nodes_list()
+            if optionC == 2 :
+                valor=input(" ingrese el valor \n >>> ")
+                self.append_node(valor)
+                the_file.write_in_file(the_file(),valor)
+                self.show_nodes_list()
+                the_file.show_file_content(the_file())
+            if optionC == 3:
+                index= int(input("ingrese el indice\n >>> "))
+                valor=input(" ingrese el valor \n >>> ")
+                #self.insert(index,valor)
+                the_file.update_file_by_index(the_file(),index,valor)
+                the_file.show_file_content(the_file())
+                self.prepend_data_lines()
+                self.show_nodes_list()
                         
                     
-            ''' elif optionB == "b":
-            
-            elif optionB == "c":
-            
-            elif optionB == "d":
-            
-            elif optionB == "e":
-            
-            elif optionB == "f":
-            
-            elif optionB == "g": '''
-        except ValueError:
-            print("se esperaba un valor dentro de los propuestos")
+                
+    
+                    
+                
+        ''' elif optionB == "b":
+        
+        elif optionB == "c":
+        
+        elif optionB == "d":
+        
+        elif optionB == "e":
+        
+        elif optionB == "f":
+        
+        elif optionB == "g": '''
+    
