@@ -24,6 +24,17 @@ class SingleLinkedList:
             node_list.append(current_node.value)
             current_node = current_node.linked_next_node
         print(f'{node_list} Cantidad de nodos {self.length}')
+        
+    def ret_node_list(self):
+        node_list = []
+        current_node = self.head
+        ''' Recorremos la lista hasta que no existan nodos '''
+        while(current_node != None):
+            ''' A la lista node_list le agregamos al final el value del nodo visitado '''
+            node_list.append(current_node.value)
+            current_node = current_node.linked_next_node
+        #print(f'{node_list} Cantidad de nodos {self.length}')
+        return node_list
 
     
     ''' Método que agrega un nodo nuevi al INICIO de la lista '''
@@ -217,11 +228,13 @@ class SingleLinkedList:
         if optionA  == "a":
             the_file.show_file_content()
         if optionA == "b":
-            the_file.write_in_file()
+            valor=input("ingrese el valor\n >>>> ")
+            the_file.write_in_file(valor)
             the_file.show_file_content()
         if optionA =="c" :
             the_file.replace_file()
             the_file.show_file_content() 
+            
         self.prepend_data_lines()      
             
         optionB=input("\n que desea continuar haciendo: \n a: insertar un nuevo nodo \n b: eliminar un nodo \n c: consultar por el valor de un nodo especificado\n d: Editar el valor de un nodo existente en la lista \n e: Invertir el contenido de la lista \n f: Vaciar la lista \n g: Salir del sistema\n >>>> ")
@@ -230,9 +243,30 @@ class SingleLinkedList:
                 while True:
                     try:
                         optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
+                        if optionC == 1:
+                            valor=input(" ingrese el valor \n >>> ")
+                            self.prepend_node(valor)
+   #                         the_file.delete_file()
+                            the_file.update_file_list(self.ret_node_list())
+                            self.show_nodes_list()
+                        if optionC == 2 :
+                            valor=input(" ingrese el valor \n >>> ")
+                            self.append_node(valor)
+                            the_file.write_in_file(valor)
+                            self.show_nodes_list()
+                            the_file.show_file_content()
+                        if optionC == 3:
+                            index= int(input("ingrese el indice\n >>> "))
+                            valor=input(" ingrese el valor \n >>> ")
+                            self.insert(index,valor)
+                            the_file.update_file(self.ret_node_list)
+                            self.show_nodes_list()
+                            
                         break
                     except ValueError:
                         print("se esperaba un valor numérico ")
+        
+                        
                     
             ''' elif optionB == "b":
             

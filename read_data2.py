@@ -1,18 +1,13 @@
-
 import io
-class ReadData:
+class ReadData2:
     ''' r: read
     w: write
     a: añadir contenido a un fichero ya existente '''
     def __init__(self):
-        self.archivo="Nodos_prueba.txt"
-        ''' self.show_file_content() '''
-        ''' self.show_file_content_v2() '''
-        ''' self.write_in_file() '''
-        ''' self.replace_file() '''
+        self.archivo=str("Nodos_prueba.txt")
     #readline un elemento por linea
-    def show_file_content():
-        with io.open("Nodos_prueba.txt",'r+', encoding='utf-8') as data_file:
+    def show_file_content(self):
+        with io.open(self.archivo,'r+', encoding='utf-8') as data_file:
             file_line = data_file.readline()
             while(file_line != ''):
                 #for line in self.file:
@@ -22,7 +17,7 @@ class ReadData:
                 file_line = data_file.readline()
         data_file.close()
         
-    def show_file_content_v3():
+    def show_file_content_v3(self):
         datos = []
         with io.open("Nodos_prueba.txt",'r+', encoding='utf-8') as data_file:
             file_lines = data_file.readlines()
@@ -48,26 +43,26 @@ class ReadData:
         return counter
     #readlines nos devuelve una lista
     
-    def show_file_content_v2():
+    def show_file_content_v2(self):
         with io.open('Nodos_prueba.txt','r+', encoding='utf-8') as data_file:
             for line in data_file.readlines():
                 print(line, end='')
         data_file.close()
 
-    def write_in_file(value):
+    def write_in_file(self,value):
         #line_write = input('\n que deseas ingresar:\n   >>> ')
         with io.open('Nodos_prueba.txt','a', encoding='utf-8') as data_file:
             data_file.write('\n' + value)
         data_file.close()
         #self.show_file_content()
     
-    def replace_file():
+    def replace_file(self):
         line_write = input('\nNuevo contenido:\n   >>> ')
         with io.open('Nodos_prueba.txt','w', encoding='utf-8') as data_file:
             data_file.write(line_write)
         data_file.close()
         #self.show_file_content()
-    def update_file_list(node_list):
+    def update_file_list(self,node_list):
         new_data= ''.join(node_list)
         with io.open('Nodos_prueba.txt',"w",encoding="utf-8") as data_file:
             for item in range (len(node_list)):
@@ -75,9 +70,4 @@ class ReadData:
         data_file.close()
         
         #hacer salto de linea e ingresar la linea nueva
-    #def update_file():
-        
-        
-        
-        
-    
+    #def update_file(self):

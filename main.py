@@ -1,12 +1,16 @@
 from singleLinkedList import SingleLinkedList
 from read_data import ReadData
+from read_data2 import ReadData2
 
 inst_sll = SingleLinkedList()
 inst_read_data = ReadData()
-inst_read_data.show_file_content_v3()
+inst_rd=ReadData2()
+
 #inst_sll.prepend_data_lines()
 #inst_sll.show_nodes_list()
 #inst_sll.menu_options()
+print(inst_read_data.count_Lines())
+inst_rd.show_file_content()
 
 ''' A, B, C, D'''
 ''' inst_sll.prepend_node('B')
