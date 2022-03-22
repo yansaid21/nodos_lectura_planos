@@ -197,6 +197,9 @@ class SingleLinkedList:
         return self.head
     
     def prepend_data_lines (self):
+        self.head=None
+        self.tail=None
+        self.length=0
         the_file= ReadData
         lines= []
         lines=the_file.show_file_content_v3(the_file())
@@ -213,14 +216,14 @@ class SingleLinkedList:
             
         if optionA  == "a":
             the_file.show_file_content(the_file())
+            self.prepend_data_lines()
         if optionA == "b":
             valor=input("ingrese el valor\n >>>> ")
             the_file.write_in_file(the_file(),valor)
             the_file.show_file_content(the_file())
+            self.prepend_data_lines()
         if optionA =="c" :
             the_file.replace_file(the_file())
-            the_file.show_file_content(the_file()) 
-            
             self.prepend_data_lines()      
         while True:
             try:    
@@ -228,6 +231,7 @@ class SingleLinkedList:
                 break
             except ValueError:
                 print("se esperaba un valor dentro de los propuestos")
+      #añadir un elemento
         if optionB == "a":
             while True:
                 try:
@@ -238,7 +242,6 @@ class SingleLinkedList:
             if optionC == 1:
                 valor=input(" ingrese el valor \n >>> ")
                 self.prepend_node(valor)
-#                         the_file.delete_file()
                 the_file.update_file_list(the_file(),self.ret_node_list())
                 self.show_nodes_list()
             if optionC == 2 :
@@ -246,19 +249,18 @@ class SingleLinkedList:
                 self.append_node(valor)
                 the_file.write_in_file(the_file(),valor)
                 self.show_nodes_list()
-                the_file.show_file_content(the_file())
             if optionC == 3:
-                index= int(input("ingrese el indice\n >>> "))
+                print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+                index= int(input("\n >>> "))
                 valor=input(" ingrese el valor \n >>> ")
                 #self.insert(index,valor)
-                the_file.update_file_by_index(the_file(),index,valor)
-                the_file.show_file_content(the_file())
+                the_file.update_file_by_index(the_file(),index-1,valor)
                 self.prepend_data_lines()
-                self.show_nodes_list()
+                
                         
                     
                 
-    
+    #eliminar en una posición en específico
                     
                 
         elif optionB == "b":
@@ -271,27 +273,37 @@ class SingleLinkedList:
             if optionC == 1:
                 the_file.delete_someOne(the_file(),0)
                 self.prepend_data_lines()
-                self.show_nodes_list()
             if optionC == 2 :
                 print(len(self.ret_node_list()))
                 the_file.delete_someOne(the_file(),len(self.ret_node_list())-1)
                 self.prepend_data_lines()
-                self.show_nodes_list()
+                
             if optionC == 3:
                 print (len(self.ret_node_list()))
-                print(f"ingrese in numero entre 1 y {the_file.count_Lines(the_file())}")
-                index= int(input("ingrese el indice\n >>> "))
+                print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+                index= int(input("\n >>> "))
                 the_file.delete_someOne(the_file(),index-1)
                 self.prepend_data_lines()
-                self.show_nodes_list()
+                
         
-            ''' elif optionB == "c":
+        elif optionB == "c":
+            print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+            index= int(input("\n >>> "))
+            self.get(index).value
             
-            elif optionB == "d":
+        elif optionB == "d":
+            print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+            index= int(input("\n >>> "))
+            valor=input("ingrese el valor \n >>> ")
+            the_file.delete_someOne(the_file(),index-1)
+            the_file.update_file_by_index(the_file(),index,valor)
+            self.prepend_data_lines()
             
-            elif optionB == "e":
-            
-            elif optionB == "f":
-            
-            elif optionB == "g": '''
+                
+        elif optionB == "e":
+            self.reverse()
+               ''' 
+                elif optionB == "f":
+                
+                elif optionB == "g": '''
     

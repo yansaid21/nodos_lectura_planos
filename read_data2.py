@@ -72,10 +72,6 @@ class ReadData:
         #hacer salto de linea e ingresar la linea nueva
     def update_file_by_index(self,index,value):
         datos= self.show_file_content_v3()
-        ''' with io.open(self.archivo,'w', encoding='utf-8') as data_file:
-            file_lines = data_file.readlines() '''
-            
-
         datos.insert(index,value) 
         self.update_file_list(datos)
              
@@ -84,13 +80,4 @@ class ReadData:
         datos.pop(index)
         self.update_file_list(datos)
         
-            
-            
         
-'''    def replace_file_v2(self,archivo):
-        current_node=self.list_nodes.head
-        with io.open(archivo,'w',encoding='utf-8') as data_file:
-            while current_node!=None:
-                data_file.write(current_node.value.strip()+'\n')
-                current_node=current_node.next_node
-        data_file.close()  '''
