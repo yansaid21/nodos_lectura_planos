@@ -214,7 +214,7 @@ class SingleLinkedList:
         the_file= ReadData
         optionA=input(" <<<<desesa: \n a: leer el archivo existente \n b: editar el archivo \n c: sobreescribir el archivo\n >>>> ")
         while optionA != "a" and optionA !="b" and optionA != "c":
-            optionA=input("ingrese uno de las letras esperadas\n >>> ")
+            optionA=input("ingrese una de las letras esperadas\n >>> ")
             
         if optionA  == "a":
             the_file.show_file_content(the_file())
@@ -230,6 +230,7 @@ class SingleLinkedList:
         while True:
             try:    
                 optionB=input("\n que desea continuar haciendo: \n a: insertar un nuevo nodo \n b: eliminar un nodo \n c: consultar por el valor de un nodo especificado\n d: Editar el valor de un nodo existente en la lista \n e: Invertir el contenido de la lista \n f: Vaciar la lista \n g: Salir del sistema\n >>>> ")
+                
                 break
             except ValueError:
                 print("se esperaba un valor dentro de los propuestos")
@@ -259,11 +260,7 @@ class SingleLinkedList:
                 the_file.update_file_by_index(the_file(),index-1,valor)
                 self.prepend_data_lines()
                 
-                        
-                    
-                
-    #eliminar en una posición en específico
-                    
+        #eliminar en una posición en específico              
                 
         elif optionB == "b":
             while True:
@@ -300,8 +297,7 @@ class SingleLinkedList:
             the_file.delete_someOne(the_file(),index-1)
             the_file.update_file_by_index(the_file(),index,valor)
             self.prepend_data_lines()
-            
-                
+               
         elif optionB == "e":
             the_file.reverse_file(the_file())
             self.prepend_data_lines()
