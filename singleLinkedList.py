@@ -212,99 +212,125 @@ class SingleLinkedList:
 
     def menu_options(self):
         the_file= ReadData
-        optionA=input(" <<<<desesa: \n a: leer el archivo existente \n b: editar el archivo \n c: sobreescribir el archivo\n >>>> ")
-        while optionA != "a" and optionA !="b" and optionA != "c":
-            optionA=input("ingrese una de las letras esperadas\n >>> ")
+        optionA=int(input(" <<<<desesa: \n 1: leer el archivo existente \n 2: editar el archivo \n 3: sobreescribir el archivo\n >>>> "))
+        while optionA != 1 and optionA !=2 and optionA != 3:
+            optionA=int(input("ingrese una de las letras esperadas\n >>> "))
             
-        if optionA  == "a":
+        if optionA == 1:
             the_file.show_file_content(the_file())
             self.prepend_data_lines()
-        if optionA == "b":
-            valor=input("ingrese el valor\n >>>> ")
-            the_file.write_in_file(the_file(),valor)
-            the_file.show_file_content(the_file())
+        if optionA == 2:
+            valor=input(" ingrese el valor \n >>> ")
+            self.append_node(valor)
+            the_file.update_file_by_index(the_file(),the_file.count_Lines(the_file()),valor)
             self.prepend_data_lines()
-        if optionA =="c" :
+        if optionA == 3 :
             the_file.replace_file(the_file())
             self.prepend_data_lines()      
         while True:
-            try:    
-                optionB=input("\n que desea continuar haciendo: \n a: insertar un nuevo nodo \n b: eliminar un nodo \n c: consultar por el valor de un nodo especificado\n d: Editar el valor de un nodo existente en la lista \n e: Invertir el contenido de la lista \n f: Vaciar la lista \n g: Salir del sistema\n >>>> ")
-                
-                break
-            except ValueError:
-                print("se esperaba un valor dentro de los propuestos")
-      #añadir un elemento
-        if optionB == "a":
             while True:
-                try:
-                    optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
+                try:    
+                    optionB=int(input("\n que desea continuar haciendo: \n 1: insertar un nuevo nodo \n 2: eliminar un nodo \n 3: consultar por el valor de un nodo especificado\n 4: Editar el valor de un nodo existente en la lista \n 5: Invertir el contenido de la lista \n 6: Vaciar la lista \n 7: Salir del sistema\n >>>> "))
+                    while optionB !=1 and  optionB !=2 and optionB !=3 and optionB !=4 and optionB !=5 and optionB !=6 and optionB !=7:
+                        optionB=int(input("se esperaba un valor dentro de los sugeridos\n ingréselo de nuevo >>> "))
                     break
                 except ValueError:
-                    print("se esperaba un valor numérico ")
-            if optionC == 1:
-                valor=input(" ingrese el valor \n >>> ")
-                self.prepend_node(valor)
-                the_file.update_file_list(the_file(),self.ret_node_list())
-                self.show_nodes_list()
-            if optionC == 2 :
-                valor=input(" ingrese el valor \n >>> ")
-                self.append_node(valor)
-                the_file.write_in_file(the_file(),valor)
-                self.show_nodes_list()
-            if optionC == 3:
-                print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+                    print("se esperaba un valor numérico")
+        #añadir un elemento
+            if optionB == 1:
+                while True:
+                    try:
+                        optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
+                        break
+                    except ValueError:
+                        print("se esperaba un valor numérico ")
+                #añadir al inicio
+                if optionC == 1:
+                    valor=input(" ingrese el valor \n >>> ")
+                    self.prepend_node(valor)
+                    the_file.update_file_list(the_file(),self.ret_node_list())
+                    self.show_nodes_list()
+                #añadir al final
+                if optionC == 2 :
+                    valor=input(" ingrese el valor \n >>> ")
+                    self.append_node(valor)
+                    the_file.update_file_by_index(the_file(),the_file.count_Lines(the_file()),valor)
+                    self.prepend_data_lines()
+                #añadir en una posición en específico
+                if optionC == 3:
+                    while True:
+                        try:
+                            print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+                            break
+                        except ValueError:
+                            print("se esperaba un valor numérico")
+                        
+                    index= int(input("\n >>> "))
+                    valor=input(" ingrese el valor \n >>> ")
+                    the_file.update_file_by_index(the_file(),index-1,valor)
+                    self.prepend_data_lines()              
+            #eliminar un nodo
+            elif optionB == 2:
+                while True:
+                    try:
+                        optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
+                        break
+                    except ValueError:
+                        print("se esperaba un valor numérico ")
+                #eliminar al inicio
+                if optionC == 1:
+                    the_file.delete_someOne(the_file(),0)
+                    self.prepend_data_lines()
+                #eliminiar al final
+                if optionC == 2 :
+                    print(len(self.ret_node_list()))
+                    the_file.delete_someOne(the_file(),the_file.count_Lines(the_file())-1)
+                    self.prepend_data_lines()
+                #eliminar en una posición en específico    
+                if optionC == 3:
+                    while True:
+                        try:
+                            print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+                            break
+                        except ValueError:
+                            print("se esperaba un valor numérico")
+                    index= int(input("\n >>> "))
+                    the_file.delete_someOne(the_file(),index-1)
+                    self.prepend_data_lines()
+                    
+            #consultar por un valor en específico
+            elif optionB == 3:
+                while True:
+                        try:
+                            print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+                            break
+                        except ValueError:
+                            print("se esperaba un valor numérico")
                 index= int(input("\n >>> "))
-                valor=input(" ingrese el valor \n >>> ")
-                #self.insert(index,valor)
+                self.get(index-1).value
+            #editar el valor de un nodo existente en la lista  
+            elif optionB == 4:
+                while True:
+                        try:
+                            print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
+                            break
+                        except ValueError:
+                            print("se esperaba un valor numérico")
+                index= int(input("\n >>> "))
+                valor=input("ingrese el valor \n >>> ")
+                the_file.delete_someOne(the_file(),index-1)
                 the_file.update_file_by_index(the_file(),index-1,valor)
                 self.prepend_data_lines()
-                
-        #eliminar en una posición en específico              
-                
-        elif optionB == "b":
-            while True:
-                try:
-                    optionC= int(input("1. al inicio \n2. al final \n3. en una posicion especificada \n>>> "))
-                    break
-                except ValueError:
-                    print("se esperaba un valor numérico ")
-            if optionC == 1:
-                the_file.delete_someOne(the_file(),0)
+            #invertir el contenido de la lista   
+            elif optionB == 5:
+                the_file.reverse_file(the_file())
                 self.prepend_data_lines()
-            if optionC == 2 :
-                print(len(self.ret_node_list()))
-                the_file.delete_someOne(the_file(),len(self.ret_node_list())-1)
-                self.prepend_data_lines()
+            #vaciar la lista   
+            elif optionB == 6:
+                the_file.delete_all(the_file())
+                self.prepend_data_lines() 
+            #salir del sistema
+            elif optionB == 7: 
+                print("hasta luego")
+                break
                 
-            if optionC == 3:
-                print (len(self.ret_node_list()))
-                print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
-                index= int(input("\n >>> "))
-                the_file.delete_someOne(the_file(),index-1)
-                self.prepend_data_lines()
-                
-        
-        elif optionB == "c":
-            print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
-            index= int(input("\n >>> "))
-            self.get(index).value
-            
-        elif optionB == "d":
-            print(f"ingrese un numero entre 1 y {the_file.count_Lines(the_file())}")
-            index= int(input("\n >>> "))
-            valor=input("ingrese el valor \n >>> ")
-            the_file.delete_someOne(the_file(),index-1)
-            the_file.update_file_by_index(the_file(),index,valor)
-            self.prepend_data_lines()
-               
-        elif optionB == "e":
-            the_file.reverse_file(the_file())
-            self.prepend_data_lines()
-            
-        elif optionB == "f":
-            the_file.delete_all(the_file())
-            self.prepend_data_lines() 
-        elif optionB == "g": 
-            print("hasta luego")
-            
